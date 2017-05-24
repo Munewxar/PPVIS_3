@@ -6,12 +6,23 @@ public class MergeSort {
     private int[] firstMassive;
     private int[] secondMassive;
     private int[] resultMassive;
+    private long startTime;
+    private long finishTime;
+    private long sortTime;
 
     public MergeSort(){
+
         generateMassives();
+        startTime = System.nanoTime();
         sortMassive(getFirstMassive(), 0, getFirstMassive().length - 1);
         sortMassive(getSecondMassive(), 0, getSecondMassive().length - 1);
         mergeMassives();
+        finishTime = System.nanoTime();
+        sortTime = finishTime - startTime;
+    }
+
+    public long getSortTime(){
+        return sortTime;
     }
 
     private int[] getFirstMassive(){
